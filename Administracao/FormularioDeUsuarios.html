@@ -48,12 +48,12 @@
       };
 
     // Inicializa o Firebase
-    firebase.initializeApp(firebaseConfig);
-    const db = firebase.database();
+      firebase.initializeApp(firebaseConfig);
+        const db = firebase.database();
 
-    // Referência para os dados
-    const userRef = db.ref('user');
-    const acervoRef = db.ref('acervo');
+        // Referência para os dados
+        const userRef = db.ref('"Usuário"');
+      ' const acervoRef = db.ref('Acervo');
 
     // Atualiza tabela de usuários
     userRef.on('value', snapshot => {
