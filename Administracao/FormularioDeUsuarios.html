@@ -3,76 +3,49 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Página inicial do protótipo do sistema Biblioteca HAS">
+    <meta name="description" content="Página administrativa para controle e verificação de usuários">
     <meta name="author" content="Nicolas Alves Araujo">
-    <title>Página inicial</title>
-    <meta charset="UTF-8">
-    <title>Tabela de Usuários e Acervo</title>
-  <style>
-    table {
-      border-collapse: collapse;
-      width: 45%;
-      margin-bottom: 30px;
-    }
+    <title>Lista de usuários</title>
+  </head>
+  
+  <body>
+    <h1>Usuários</h1>
+    <table id="userTable">
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>ID</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
 
-    th, td {
-      border: 1px solid #999;
-      padding: 8px;
-      text-align: left;
-    }
+    <h1>Acervo</h1>
+    <table id="acervoTable">
+      <thead>
+        <tr>
+          <th>Título</th>
+          <th>Autor</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
 
-    th {
-      background-color: #f0f0f0;
-    }
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-database-compat.js"></script>
 
-    body {
-      font-family: Arial, sans-serif;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 20px;
-    }
-  </style>
-</head>
-<body>
-
-  <h1>Usuários</h1>
-  <table id="userTable">
-    <thead>
-      <tr>
-        <th>Nome</th>
-        <th>ID</th>
-      </tr>
-    </thead>
-    <tbody></tbody>
-  </table>
-
-  <h1>Acervo</h1>
-  <table id="acervoTable">
-    <thead>
-      <tr>
-        <th>Título</th>
-        <th>Autor</th>
-      </tr>
-    </thead>
-    <tbody></tbody>
-  </table>
-
-  <!-- Firebase SDK -->
-  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-database-compat.js"></script>
-
-  <script>
-    // Configuração do seu Firebase
-    const firebaseConfig = {
-      apiKey: "SUA_API_KEY",
-      authDomain: "SEU_PROJETO.firebaseapp.com",
-      databaseURL: "https://SEU_PROJETO.firebaseio.com",
-      projectId: "SEU_PROJETO",
-      storageBucket: "SEU_PROJETO.appspot.com",
-      messagingSenderId: "XXXXXXXXXXXX",
-      appId: "APP_ID"
-    };
+    <script>
+      // Configuração do seu Firebase
+      const firebaseConfig = {
+        apiKey: "AIzaSyA2T2ImasyoRPG4tYxMsAHoaZNKUYe4oUY",
+        authDomain: "tcc-biblioteca-hascaralho.firebaseapp.com",
+        databaseURL: https://tcc-biblioteca-hascaralho-default-rtdb.firebaseio.com",
+        projectId: "tcc-biblioteca-hascaralho",
+        storageBucket: "tcc-biblioteca-hascaralho.firebasestorage.app",
+        messagingSenderId: "311752472947",
+        appId: "1:311752472947:web:64d37351c8e173251e6d06"
+      };
 
     // Inicializa o Firebase
     firebase.initializeApp(firebaseConfig);
