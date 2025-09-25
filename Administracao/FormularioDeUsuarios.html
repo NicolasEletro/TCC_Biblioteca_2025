@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang = "pt-br">
+  <head>
+    <meta charset="UTF-8">
+    <title>Tabela de Usuários e Acervo</title>
+  <style>
+    table {
+      border-collapse: collapse;
+      width: 45%;
+      margin-bottom: 30px;
+    }
+
+    th, td {
+      border: 1px solid #999;
+      padding: 8px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #f0f0f0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Usuários</h1>
+  <table id="userTable">
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>ID</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <h1>Acervo</h1>
+  <table id="acervoTable">
+    <thead>
+      <tr>
+        <th>Título</th>
+        <th>Autor</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-database-compat.js"></script>
+
+  <script>
+    // Configuração do seu Firebase
+    const firebaseConfig = {
+      apiKey: "SUA_API_KEY",
+      authDomain: "SEU_PROJETO.firebaseapp.com",
+      databaseURL: "https://SEU_PROJETO.firebaseio.com",
+      projectId: "SEU_PROJETO",
+      storageBucket: "SEU_PROJETO.appspot.com",
+      messagingSenderId: "XXXXXXXXXXXX",
+      appId: "APP_ID"
+    };
+
+    // Inicializa o Firebase
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.database();
+
+    // Referência para os dados
+    const userRef = db.ref('user');
+    const acervoRef = db.ref('acervo');
+
+    // Atualiza tabela de usuários
+    userRef.on('value', snapshot => {
+      const users = snapshot.val();
+      const userTable = document.querySelector('#userTable tbody');
+      userTable.innerHTML = ''; // Limpa antes de inserir
+
+      for (const key in users) {
+        const user = users[key];
+        const row = document.createElement('tr');
+        row.innerHTML = `<td>${user.nome}</td><td>${user.ID}</td>`;
+        userTable.appendChild(row);
+      }
+    });
+
+    // Atualiza tabela de acervo
+    acervoRef.on('value', snapshot => {
+      const livros = snapshot.val();
+      const acervoTable = document.querySelector('#acervoTable tbody');
+      acervoTable.innerHTML = ''; // Limpa antes de inserir
+
+      for (const key in livros) {
+        const livro = livros[key];
+        const row = document.createElement('tr');
+        row.innerHTML = `<td>${livro.titulo}</td><td>${livro.autor}</td>`;
+        acervoTable.appendChild(row);
+      }
+    });
+  </script>
+
+</body>
+</html>
