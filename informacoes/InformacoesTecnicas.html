@@ -7,6 +7,14 @@
     <meta name="author" content="Nicolas Alves Araujo">
     <title>Informações técnicas</title>
     <base href = "https://nicolaseletro.github.io/TCC_Biblioteca_2025/">
+
+    <script>
+      // Aguarda o carregamento do DOM antes de mexer nos elementos
+      document.addEventListener("DOMContentLoaded", function() {
+        document.getElementById("UsePage").hidden = false;
+        document.getElementById("AdmPage").hidden = true;
+      });
+    </script>
   </head>
   
   <body>
@@ -15,7 +23,7 @@
       <nav>
         <a href = "PaginaInicial.html">Página inicial</a> | 
         <a href = "informacoes/SobreNos.html">Informações gerais sobre o projeto e a equipe</a> |
-        Acervo da biblioteca</li> |
+        <ins>Acervo da biblioteca</ins> |
         <a href = "informacoes/InformacoesTecnicas.html">Informações técnicas e funcionamento</a> 
       </nav>
       <hr>
@@ -25,31 +33,75 @@
     <main>
       <h1>Informações técnicas e funcionamento</h1>
 
-      <div id = "sumário">
-        <nav>  
-          <fieldset>
-            <legend>Sumário:</legend>
-            <ul>
-              <li><a href = "informacoes/SobreNos.html#sobre o projeto"><strong>Sobre o projeto</strong></a></li>
+      <div id = "UserPage">
+        <div id = "sumário do usuário">
+          <nav>
+            <fieldset>
+              <legend>Sumário:</legend>
               <ul>
-                <li><a href = "informacoes/SobreNos.html#introdução">Introdução ao projeto</a></li>
-                <li><a href = "informacoes/SobreNos.html#objetivos">Objetivos</a></li>
-                <li><a href = "informacoes/SobreNos.html#aplicações">Aplicações</a></li>
-                <li><a href = "informacoes/SobreNos.html#por que deste sistema">Por que deste sistema?</a></li>
-                <li><a href = "informacoes/SobreNos.html#impacto desejado">Impacto desejado</a></li>
+                <li><a href = "informacoes/InformacoesTecnicas.html#instrução para usuário"><strong>Instrução de uso para usuários</strong></a></li>
+              
+                <ul>
+                  <li><a href = "informacoes/SobreNos.html#introdução">Introdução ao projeto</a></li>
+                  <li><a href = "informacoes/SobreNos.html#objetivos">Objetivos</a></li>
+                  <li><a href = "informacoes/SobreNos.html#aplicações">Aplicações</a></li>
+                  <li><a href = "informacoes/SobreNos.html#por que deste sistema">Por que deste sistema?</a></li>
+                  <li><a href = "informacoes/SobreNos.html#impacto desejado">Impacto desejado</a></li>
+                </ul>
+                <li><a href = "informacoes/SobreNos.html#sobre o grupo"><strong>Sobre o grupo</strong></a></li>
+                <ul>
+                  <li><a href = "informacoes/SobreNos.html#quem somos nós">Quem somos nós?</a></li>
+                  <li><a href = "informacoes/SobreNos.html#nossos ideais">Nossos ideais</a></li>
+                </ul>
               </ul>
-              <li><a href = "informacoes/SobreNos.html#sobre o grupo"><strong>Sobre o grupo</strong></a></li>
+            </fieldset>
+          </nav>
+        </div>
+        
+        <div id = "UserCont">
+          <h2 id = "instrução para usuário">Intrução de uso para usuários</h2>
+        </div>
+      </div>
+      
+      
+      <div id = "AdmPage" hidden>
+        <div id = "sumário do administrador">
+          <nav>  
+            <fieldset>
+              <legend>Sumário:</legend>
               <ul>
-                <li><a href = "informacoes/SobreNos.html#quem somos nós">Quem somos nós?</a></li>
-                <li><a href = "informacoes/SobreNos.html#nossos ideais">Nossos ideais</a></li>
+                <li><a href = "informacoes/InformacoesTecnicas.html#instrução para adm"><strong>Instrução de uso para administradores</strong></a></li>
+              
+                <ul>
+                  <li><a href = "informacoes/SobreNos.html#introdução">Introdução ao projeto</a></li>
+                  <li><a href = "informacoes/SobreNos.html#objetivos">Objetivos</a></li>
+                  <li><a href = "informacoes/SobreNos.html#aplicações">Aplicações</a></li>
+                  <li><a href = "informacoes/SobreNos.html#por que deste sistema">Por que deste sistema?</a></li>
+                  <li><a href = "informacoes/SobreNos.html#impacto desejado">Impacto desejado</a></li>
+                </ul>
+                <li><a href = "informacoes/SobreNos.html#sobre o grupo"><strong>Sobre o grupo</strong></a></li>
+                <ul>
+                  <li><a href = "informacoes/SobreNos.html#quem somos nós">Quem somos nós?</a></li>
+                  <li><a href = "informacoes/SobreNos.html#nossos ideais">Nossos ideais</a></li>
+                </ul>
               </ul>
-            </ul>
-          </fieldset>
-        </nav>
+            </fieldset>
+          </nav>
+        </div>
+
+        <div id = "AdmCont">
+          <h2 id = "instrução para adm">Intrução de uso para administradores</h2>
+        </div>
       </div>
 
-      
+        
+      <div  id = "pageinfSet">
+        <label for = "ChangeButton">Clique aqui para alterar entre modo de usuário e administrador</label> 
+        <button value = "user" id = "changebutton" onClick = "changePage">Usuário</button>
+      </div>
     </main>
+    
+    
     <footer>
       <br>
       <hr>
@@ -68,5 +120,25 @@
         *Telegram: <a href="https://t.me/oTalDoRusso" target="_blank">@oTalDoRusso</a></il>
       </address>
     </footer>
+
+    <script>
+      function changePage(){
+      const btn = document.getElementById("changebutton"); // referência do botão
+      const estadoAtual = btn.value; // pega o valor atual do botão
+      
+      if(estadoAtual === "user"){
+        btn.textContent = "Administrador";
+        btn.value = "adm";
+        document.getElementById("UserPage").hidden = false;
+        document.getElementById("AdmPage").hidden = true;
+      }
+      else if(estadoAtual === "adm"){
+        btn.textContent = "Usuário";
+        btn.value = "user";
+        document.getElementById("UserPage").hidden = true;
+        document.getElementById("AdmPage").hidden = false;
+      }
+    }
+    </script>
   </body>
 </html>
