@@ -128,13 +128,13 @@
       
       if(estadoAtual === "user"){
         btn.textContent = "Administrador";
-        btn.value = "user";
+        btn.value = "adm";
         document.getElementById("UserPage").hidden = false;
         document.getElementById("AdmPage").hidden = true;
       }
       else if(estadoAtual === "adm"){
         btn.textContent = "Usuário";
-        btn.value = "adm";
+        btn.value = "user";
         document.getElementById("UserPage").hidden = true;
         document.getElementById("AdmPage").hidden = false;
       }
