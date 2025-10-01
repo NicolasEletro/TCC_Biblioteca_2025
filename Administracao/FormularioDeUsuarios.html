@@ -11,15 +11,15 @@
     <script>
       // Aguarda o carregamento do DOM antes de mexer nos elementos
       document.addEventListener("DOMContentLoaded", function() {
-        console.log("caregando versão 1.0 a partir da contagem");
-        document.getElementById("UserPage").hidden = false;
-        document.getElementById("AdmPage").hidden = true;
+        console.log("caregando versão 1.0 a partir da contagem"); //versão da pag
+        document.getElementById("UserPage").hidden = false; //mostra a pag de usuário
+        document.getElementById("AdmPage").hidden = true; //esconde o conteúdo administrativo
 
-        document.getElementById("confirsenha").hidden = false;
+        document.getElementById("confirsenha").hidden = false; //inicia a contrasenha como obrigatória para mudança
         document.getElementById("confirsenha").required = true;
         document.getElementById("confirsenha").hidden = false;
 
-        document.getElementById("senha").required = true;
+        document.getElementById("senha").required = true; //inicia a contrasenha como obrigatória para mudança
         document.getElementById("senha").disabled = false;
       });
     </script>
@@ -48,9 +48,10 @@
         </p>
         <label for = "ChangeButton">Clique aqui para alternar a atual página para:</label> 
         <button value = "user" id = "changebutton" onClick = "changePage()">Administrador</button>
-        <label for = "senha">Digite a senha administrativa</label>
+
+        <label for = "senha"><br>Digite a senha administrativa</label>
         <input type = "password" id = "senha" name = "senha" required disabled>
-        <label for = "confirsenha">confirme a senha administrativa</label>
+        <label for = "confirsenha"><br>confirme a senha administrativa</label>
         <input type = "password" id = "confirsenha" name = "confirsenha" required disabled hidden>
         <input type = "hidden" id = "expectedPsw" name = "expectedPsw" value =  "Horácio123">
       </div>
