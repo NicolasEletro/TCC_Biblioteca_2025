@@ -129,10 +129,16 @@
 
     <script>
       function changePage(){
-      const btn = document.getElementById("changebutton"); // referência do botão
+      const btn = document.getElementById("changebutton");
+      const psw = document.getElementById("senha");
+      const cpsw = document.getElementById("confirSenha");
+
       const estadoAtual = btn.value; // pega o valor atual do botão
       
       if(estadoAtual === "user"){
+        const senhaEsperada = psw.value;
+        const confEsperada = cpsw.value;
+        
         btn.textContent = "Administrador";
         btn.value = "adm";
         document.getElementById("UserPage").hidden = false;
