@@ -11,13 +11,13 @@
     <script>
       // Aguarda o carregamento do DOM antes de mexer nos elementos
       document.addEventListener("DOMContentLoaded", function() {
-        console.log("caregando versão 1.01 a partir da contagem"); //versão da pag
+        console.log("caregando versão 1.02 a partir da contagem"); //versão da pag
         document.getElementById("UserPage").hidden = false; //mostra a pag de usuário
         document.getElementById("AdmPage").hidden = true; //esconde o conteúdo administrativo
 
         document.getElementById("confirsenha").hidden = false; //inicia a contrasenha como obrigatória para mudança
         document.getElementById("confirsenha").required = true;
-        document.getElementById("confirsenha").hidden = false;
+        document.getElementById("confirsenha").disabled = false;
 
         document.getElementById("senha").required = true; //inicia a contrasenha como obrigatória para mudança
         document.getElementById("senha").disabled = false;
@@ -143,18 +143,20 @@
       if(estadoAtual === "user"){
         const senha = psw.value;
         const confirm = cpsw.value;
+        const real = exp.value;
+        console.log(senha+':'+confirm+':'+real);
         
         btn.textContent = "Administrador";
         btn.value = "adm";
         document.getElementById("UserPage").hidden = false;
         document.getElementById("AdmPage").hidden = true;
         console.log("Página alterada para modo Administrador");
-        document.getElementById("confirsenha").hidden = true;
-        document.getElementById("confirsenha").required = false;
-        document.getElementById("confirsenha").disabled = true;
+        cpsw.hidden = true;
+        cpsw.required = false;
+        cpsw.disabled = true;
 
-        document.getElementById("senha").required = false;
-        document.getElementById("senha").disabled = true;
+        psw.required = false;
+        psw.disabled = true;
 
       }
       else if(estadoAtual === "adm"){
