@@ -13,6 +13,13 @@
       document.addEventListener("DOMContentLoaded", function() {
         document.getElementById("UserPage").hidden = false;
         document.getElementById("AdmPage").hidden = true;
+
+        document.getElementById("confirsenha").hidden = false;
+        document.getElementById("confirsenha").required = true;
+        document.getElementById("confirsenha").hidden = false;
+
+        document.getElementById("senha").required = true;
+        document.getElementById("senha").disabled = false;
       });
     </script>
   </head>
@@ -33,6 +40,19 @@
     <main>
       <h1>Informações técnicas e funcionamento</h1>
 
+      <div  id = "pageinfSet">
+        <p>
+          Esta página tem duas versões:<br>
+          Uma é para usuários e dá informações gerais sobre o sistema e outra é uma página que dá instruções administrativas para o funcionário.
+        </p>
+        <label for = "ChangeButton">Clique aqui para alternar a atual página para:</label> 
+        <button value = "user" id = "changebutton" onClick = "changePage()">Administrador</button>
+        <label for = "senha">Digite a senha administrativa</label>
+        <input type = "password" id = "senha" name = "senha" value = "Horácio123" required disabled>
+        <label for = "confirsenha">confirme a senha administrativa</label>
+        <input type = "password" id = "confirsenha" name = "confirsenha" value = "Horácio123" required disabled hidden>
+      </div>
+
       <div id = "UserPage">
         <div id = "sumário do usuário">
           <nav>
@@ -50,18 +70,21 @@
         
         <div id = "UserCont">
           <h2 id = "instrução para usuário">Intrução de uso para usuários</h2>
+            <p>O sistema Funciona com Base em três sistemas independentes que funcionam com base no RFID.</p>
             <p>
-              O sistema Funciona com Base em três sistemas independentes que funcionam com base no RFID.
-              <i>Nota: todos os passos serão instruídos em um display, não se preocupe.</i>
+              <i>Nota<sup>1</sup>: todos os passos serão instruídos em um display, não se preocupe.</i><br>
+              <i>Nota<sup>2</sup>: O sistema prático pode sofrer simplificações. este site foi comtado com base no projeto ideal.<br> <strong><u>Siga as instruções da IHM!</u></strong></i><br>
             </p>
+          
             <h3 id = "como pegar um livro emprestado">Como pegar um livro emprestado</h3>
               <p>
                 <ol>
                   <li>Apertar botão de início do </li>
-                  <li></li>
+                  <li>Inserir o livro na ala de livros</li>
+                  <li>aproximar sua TAG do sensor para usuário</li>
                 </ol>
               </p>
-        </div>
+        </div> 
       </div>
       
       
@@ -82,11 +105,6 @@
         </div>
       </div>
 
-        
-      <div  id = "pageinfSet">
-        <label for = "ChangeButton">Clique aqui para alternar a página para:</label> 
-        <button value = "user" id = "changebutton" onClick = "changePage()">Administrador</button>
-      </div>
     </main>
     
     
@@ -119,12 +137,27 @@
         btn.value = "adm";
         document.getElementById("UserPage").hidden = false;
         document.getElementById("AdmPage").hidden = true;
+        console.log("Página alterada para modo Administrador");
+        document.getElementById("confirsenha").hidden = true;
+        document.getElementById("confirsenha").required = false;
+        document.getElementById("confirsenha").disabled = true;
+
+        document.getElementById("senha").required = false;
+        document.getElementById("senha").disabled = true;
+
       }
       else if(estadoAtual === "adm"){
         btn.textContent = "Usuário";
         btn.value = "user";
         document.getElementById("UserPage").hidden = true;
         document.getElementById("AdmPage").hidden = false;
+        console.log("Página alterada para modo Aluno");
+        document.getElementById("confirsenha").hidden = false;
+        document.getElementById("confirsenha").required = true;
+        document.getElementById("confirsenha").hidden = false;
+        document.getElementById("senha").required = true;
+        document.getElementById("senha").disabled = false;
+        console.log("Senha para modo administrador ativada");
       }
     }
     </script>
