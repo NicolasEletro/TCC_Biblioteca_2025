@@ -159,16 +159,16 @@
         psw.disabled = true;
       }
       else if(estadoAtual === "adm"){
-        btn.textContent = "Usuário";
+        btn.textContent = "Administrador";
         btn.value = "user";
         document.getElementById("UserPage").hidden = true;
         document.getElementById("AdmPage").hidden = false;
         console.log("Página alterada para modo Aluno");
-        cpsw.required = false;
-        cpsw.disabled = true;
+        cpsw.required = true;
+        cpsw.disabled = false;
 
-        psw.required = false;
-        psw.disabled = true;
+        psw.required = true;
+        psw.disabled = false;
         console.log("Senha para modo administrador ativada");
       }
     }
