@@ -11,7 +11,7 @@
     <script>
       // Aguarda o carregamento do DOM antes de mexer nos elementos
       document.addEventListener("DOMContentLoaded", function() {
-        console.log("caregando versão 1.0 a partir da contagem"); //versão da pag
+        console.log("caregando versão 1.01 a partir da contagem"); //versão da pag
         document.getElementById("UserPage").hidden = false; //mostra a pag de usuário
         document.getElementById("AdmPage").hidden = true; //esconde o conteúdo administrativo
 
@@ -46,7 +46,7 @@
           Esta página tem duas versões:<br>
           Uma é para usuários e dá informações gerais sobre o sistema e outra é uma página que dá instruções administrativas para o funcionário.
         </p>
-        <label for = "ChangeButton">Clique aqui para alternar a atual página para:</label> 
+        <label for = "changeButton">Clique aqui para alternar a atual página para:</label> 
         <button value = "user" id = "changebutton" onClick = "changePage()">Administrador</button>
 
         <label for = "senha"><br>Digite a senha administrativa</label>
