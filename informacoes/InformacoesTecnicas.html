@@ -15,7 +15,7 @@
         document.getElementById("UserPage").hidden = false; //mostra a pag de usuário
         document.getElementById("AdmPage").hidden = true; //esconde o conteúdo administrativo
 
-        document.getElementById("confirsenha").hidden = false; //inicia a contrasenha como obrigatória para mudança
+        //inicia a contrasenha como obrigatória para mudança
         document.getElementById("confirsenha").required = true;
         document.getElementById("confirsenha").disabled = false;
 
@@ -52,7 +52,7 @@
         <label for = "senha"><br>Digite a senha administrativa</label>
         <input type = "password" id = "senha" name = "senha" required disabled>
         <label for = "confirsenha"><br>confirme a senha administrativa</label>
-        <input type = "password" id = "confirsenha" name = "confirsenha" required disabled hidden>
+        <input type = "password" id = "confirsenha" name = "confirsenha" required disabled>
         <input type = "hidden" id = "expectedPsw" name = "expectedPsw" value =  "Horácio123">
       </div>
 
@@ -144,20 +144,19 @@
         const senha = psw.value;
         const confirm = cpsw.value;
         const real = exp.value;
+
         console.log(senha+':'+confirm+':'+real);
-        
-        btn.textContent = "Administrador";
+
+        btn.textContent = "Usuário";
         btn.value = "adm";
         document.getElementById("UserPage").hidden = false;
         document.getElementById("AdmPage").hidden = true;
         console.log("Página alterada para modo Administrador");
-        cpsw.hidden = true;
         cpsw.required = false;
         cpsw.disabled = true;
 
         psw.required = false;
         psw.disabled = true;
-
       }
       else if(estadoAtual === "adm"){
         btn.textContent = "Usuário";
@@ -165,11 +164,11 @@
         document.getElementById("UserPage").hidden = true;
         document.getElementById("AdmPage").hidden = false;
         console.log("Página alterada para modo Aluno");
-        document.getElementById("confirsenha").hidden = false;
-        document.getElementById("confirsenha").required = true;
-        document.getElementById("confirsenha").hidden = false;
-        document.getElementById("senha").required = true;
-        document.getElementById("senha").disabled = false;
+        cpsw.required = false;
+        cpsw.disabled = true;
+
+        psw.required = false;
+        psw.disabled = true;
         console.log("Senha para modo administrador ativada");
       }
     }
