@@ -53,6 +53,11 @@
         <input type = "password" id = "senha" name = "senha" required disabled>
         <label for = "confirsenha"><br>confirme a senha administrativa</label>
         <input type = "password" id = "confirsenha" name = "confirsenha" required disabled>
+        <br>
+        <span id = "nullpsw" hidden><i><strong>Algum campo está em branco</strong></i></span>
+        <span id = "difpsw" hidden><i><strong>As senhas não coincidem</strong></i></span>
+        <span id = "incpsw" hidden><i><strong>Senha incorreta</strong></i></span>
+        <br>
         <input type = "hidden" id = "expectedPsw" name = "expectedPsw" value =  "Horácio123">
       </div>
 
@@ -88,7 +93,7 @@
                 </ol>
               </p>
         </div> 
-      </div>
+      </div>  
       
       
       <div id = "AdmPage" hidden>
@@ -107,7 +112,6 @@
           <h2 id = "instrução para adm">Intrução de uso para administradores</h2>
         </div>
       </div>
-
     </main>
     
     
@@ -132,48 +136,77 @@
 
     <script>
       function changePage(){
-      const btn = document.getElementById("changebutton");
-      const psw = document.getElementById("senha");
-      const cpsw = document.getElementById("confirsenha");
-      const exp = document.getElementById("expectedPsw");
-
-      const estadoAtual = btn.value; 
-      console.log("estado atual:" + estadoAtual);
-
-      if(estadoAtual === "user"){
+      //___________________________________________________
+        const btn = document.getElementById("changebutton");
+        const psw = document.getElementById("senha");
+        const cpsw = document.getElementById("confirsenha");
+        const exp = document.getElementById("expectedPsw");
+      //___________________________________________________
+        const estadoAtual = btn.value; 
         const senha = psw.value;
         const confirm = cpsw.value;
         const real = exp.value;
+      //___________________________________________________
+        console.log("estado atual:" + estadoAtual);
+      //___________________________________________________
+        if(senha === null || senha === "" || confirm === null || confirm === ""){
+          document.getElementById("nullpsw").hidden = false;
+          document.getElementById("difpsw").hidden = true;
+          document.getElementById("incpsw").hidden = true;
+          console.log("campo senha vazio");
+          return;
+        }
+        else if(senha !== confirm){
+          document.getElementById("nullpsw").hidden = true;
+          document.getElementById("difpsw").hidden = false;
+          document.getElementById("incpsw").hidden = true;
+          console.log("senhas diferentes");
+          return;
+        }
+        else if(senha !== real){
+          document.getElementById("nullpsw").hidden = true;
+          document.getElementById("difpsw").hidden = true;
+          document.getElementById("incpsw").hidden = false;
+          console.log("senha incorreta");
+          return;
+        }
+        else{
+          document.getElementById("nullpsw").hidden = true;
+          document.getElementById("difpsw").hidden = true;
+          document.getElementById("incpsw").hidden = true;
+        }
+      //___________________________________________________
+        if(estadoAtual === "user"){
+          console.log(senha+':'+confirm+':'+real);
 
-        console.log(senha+':'+confirm+':'+real);
+          btn.textContent = "Usuário";
+          btn.value = "adm";
+          document.getElementById("UserPage").hidden = false;
+          document.getElementById("AdmPage").hidden = true;
+          console.log("Página alterada para modo Administrador");
+          cpsw.required = false;
+          cpsw.disabled = true;
 
-        btn.textContent = "Usuário";
-        btn.value = "adm";
-        document.getElementById("UserPage").hidden = false;
-        document.getElementById("AdmPage").hidden = true;
-        console.log("Página alterada para modo Administrador");
-        cpsw.required = false;
-        cpsw.disabled = true;
+          psw.required = false;
+          psw.disabled = true;
+        }
+        else if(estadoAtual === "adm"){
+          btn.textContent = "Administrador";
+          btn.value = "user";
+          document.getElementById("UserPage").hidden = true;
+          document.getElementById("AdmPage").hidden = false;
+          console.log("Página alterada para modo Aluno");
+          cpsw.required = true;
+          cpsw.disabled = false;
 
-        psw.required = false;
-        psw.disabled = true;
+          psw.required = true;
+          psw.disabled = false;
+          console.log("Senha para modo administrador ativada");
+        }
+        psw.value = null;
+        cpsw.value = null;
+        console.log("campos de senha limpos");
       }
-      else if(estadoAtual === "adm"){
-        btn.textContent = "Administrador";
-        btn.value = "user";
-        document.getElementById("UserPage").hidden = true;
-        document.getElementById("AdmPage").hidden = false;
-        console.log("Página alterada para modo Aluno");
-        cpsw.required = true;
-        cpsw.disabled = false;
-
-        psw.required = true;
-        psw.disabled = false;
-        console.log("Senha para modo administrador ativada");
-      }
-      psw.value = null;
-      cpsw.value = null;
-    }
     </script>
   </body>
 </html>
