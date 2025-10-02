@@ -146,39 +146,40 @@
         const senha = psw.value;
         const confirm = cpsw.value;
         const real = exp.value;
-      //___________________________________________________
+      //_________________________________________________
         console.log("estado atual:" + estadoAtual);
-      //___________________________________________________
-        if(senha === null || senha === "" || confirm === null || confirm === ""){
-          document.getElementById("nullpsw").hidden = false;
-          document.getElementById("difpsw").hidden = true;
-          document.getElementById("incpsw").hidden = true;
-          console.log("campo senha vazio");
-          return;
-        }
-        else if(senha !== confirm){
-          document.getElementById("nullpsw").hidden = true;
-          document.getElementById("difpsw").hidden = false;
-          document.getElementById("incpsw").hidden = true;
-          console.log("senhas diferentes");
-          return;
-        }
-        else if(senha !== real){
-          document.getElementById("nullpsw").hidden = true;
-          document.getElementById("difpsw").hidden = true;
-          document.getElementById("incpsw").hidden = false;
-          console.log("senha incorreta");
-          return;
-        }
-        else{
-          document.getElementById("nullpsw").hidden = true;
-          document.getElementById("difpsw").hidden = true;
-          document.getElementById("incpsw").hidden = true;
-        }
+      
       //___________________________________________________
         if(estadoAtual === "user"){
           console.log(senha+':'+confirm+':'+real);
-
+          //___________________________________________________
+          if(senha === null || senha === "" || confirm === null || confirm === ""){
+            document.getElementById("nullpsw").hidden = false;
+            document.getElementById("difpsw").hidden = true;
+            document.getElementById("incpsw").hidden = true;
+            console.log("campo senha vazio");
+            return;
+          }
+          else if(senha !== confirm){
+            document.getElementById("nullpsw").hidden = true;
+            document.getElementById("difpsw").hidden = false;
+            document.getElementById("incpsw").hidden = true;
+            console.log("senhas diferentes");
+            return;
+          }
+          else if(senha !== real){
+            document.getElementById("nullpsw").hidden = true;
+            document.getElementById("difpsw").hidden = true;
+            document.getElementById("incpsw").hidden = false;
+            console.log("senha incorreta");
+            return;
+          }
+          else{
+            document.getElementById("nullpsw").hidden = true;
+            document.getElementById("difpsw").hidden = true;
+            document.getElementById("incpsw").hidden = true;
+          }
+          //________________________________________________
           btn.textContent = "Usuário";
           btn.value = "adm";
           document.getElementById("UserPage").hidden = false;
